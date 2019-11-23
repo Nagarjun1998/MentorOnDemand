@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+        
+</head>
+
+<body>
+<div class="page-wrapper p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">User Registration Info</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group">
+                                <input class="input--style-2" type="text" formControlName="username" placeholder="Enter Username" name="username" [(ngModel)]="item.username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback" style="color: red;">
+                                    <div *ngIf="f.username.errors.required">Username is required</div>
+                                </div>
+                            </div>
+                    <div class="input-group">
+                        <input class="input--style-2" type="email" formControlName="email" placeholder="Enter Valid Email" name="email" [(ngModel)]="item.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                            <input class="input--style-2" type="text" formControlName="contactno" placeholder="Enter Contact No" name="contactno" [(ngModel)]="item.contactno" [ngClass]="{ 'is-invalid': submitted && f.contactno.errors }">
+                             <div *ngIf="submitted && f.contactno.errors" class="invalid-feedback" style="color: red;">
+                                <div *ngIf="f.contactno.errors.required">Contact No is required</div>
+                                <div *ngIf="f.contactno.errors.maxlength">Contact No must be max 10 digits</div>
+                            </div>
+                        </div>
+                    <div class="input-group">
+                        <input class="input--style-2" type="password" formControlName="password" placeholder="Password" name="password" id="password" [(ngModel)]="item.password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                   
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>                  
+                    </div>
+                    
+                    
+                    <div class="input-group">
+                        <input class="input--style-2" type="password" placeholder="Confirm Password" name="re_password" id="re_password" formControlName="re_password" [(ngModel)]="item.re_password" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }">
+                        <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.re_password.errors.required">Password is required</div>
+                            <div *ngIf="f.re_password.errors.mustMatch">Passwords must match</div>
+                        </div> 
+                    </div>
+                    
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" type="submit" >Submit</button>
+                    </div>
+                    <div style="margin-top: 23px;
+                    margin-bottom: -28px;">
+                        <p>Already have an account?&nbsp;<a routerLink="../../login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
